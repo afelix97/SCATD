@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s3="http://www.aforecoppel2-1.com.mx/arquitectura-ws" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.aforecoppel2-1.com.mx/WSVentanillaUnicaAforesService/" xmlns:s1="http://www.aforecoppel2-1.com.mx/ventanillaUnica" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s2="http://www.aforecoppel2-1.com.mx/ventanillaUnica/consultarSaldoAfore" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://www.aforecoppel2-1.com.mx/WSVentanillaUnicaAforesService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.aforecoppel2-1.com.mx/WSVentanillaUnicaAforesService/">
+      <s:import namespace="http://www.aforecoppel2-1.com.mx/ventanillaUnica" />
+      <s:element name="consultarSaldoAfore">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s1:datosRecibidos" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="consultarSaldoAforeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s1:consultarSaldoAforeResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.aforecoppel2-1.com.mx/ventanillaUnica">
+      <s:import namespace="http://www.aforecoppel2-1.com.mx/ventanillaUnica/consultarSaldoAfore" />
+      <s:element name="datosRecibidos" type="s1:consultarSaldoAforeVentanillaRequest" />
+      <s:complexType name="consultarSaldoAforeVentanillaRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="businessOperation" type="s2:consultarSaldoAforeRequest" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="consultarSaldoAforeResult" type="s1:consultarSaldoAforeVentanillaResponse" />
+      <s:complexType name="consultarSaldoAforeVentanillaResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="businessOperation" type="s2:consultarSaldoAforeResponse" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.aforecoppel2-1.com.mx/ventanillaUnica/consultarSaldoAfore">
+      <s:import namespace="http://www.aforecoppel2-1.com.mx/arquitectura-ws" />
+      <s:complexType name="consultarSaldoAforeRequest">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="curp" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="nss" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="cveInstitutoOrigen" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="consultarSaldoAforeResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="s3:businessOperation">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="businessData" type="s2:businessData" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="businessData">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="curp" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="nss" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="saldoSar92" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="retiro97" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="cuotaSocial" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="cv" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="vivienda97" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="saldoVivienda97AIVS" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="saldoVivienda92" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="saldoVivienda92AIVS" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="saldoAhorroRetiroIB" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="saldoAportacionesVoluntarias" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="saldoRetiro92I" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="saldoAportaCompRetiro" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="saldoViviendaFI92" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="saldoViviendaFI92AIVS" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="saldoAportaLargoPlazo" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="saldoFI08" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="saldoFI08AIVS" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="saldoRetiroI08" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="saldoCVI" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="saldoAhorroSolidario" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="saldoCuotaSocialI" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="saldoBonoMontoUDIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="anhoVencimiento" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="diagnostico" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="folioSolicitud" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="descripcion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="cveInstitutoOrigen" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.aforecoppel2-1.com.mx/arquitectura-ws">
+      <s:complexType name="businessOperation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="businessResult" type="s3:businessResult" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="businessErrors" type="s3:ArrayOfBusinessError" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="businessResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="result" type="s3:enumBusinessResult" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="enumBusinessResult">
+        <s:restriction base="s:string">
+          <s:enumeration value="OK" />
+          <s:enumeration value="ERR" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfBusinessError">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="businessError" type="s3:businessError" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="businessError">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="idError" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="noError" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="descError" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="date" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="error" type="s3:enumBusinessError" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="enumBusinessError">
+        <s:restriction base="s:string">
+          <s:enumeration value="ERR_BUSINESS_NOT_FOUND" />
+          <s:enumeration value="ERR_BUSINESS_NOT_AVAILABLE" />
+          <s:enumeration value="ERR_BUSINESS_NOT_LOAD" />
+          <s:enumeration value="ERR_BUSINESS_INVOKE" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="consultarSaldoAforeSoapIn">
+    <wsdl:part name="parameters" element="tns:consultarSaldoAfore" />
+  </wsdl:message>
+  <wsdl:message name="consultarSaldoAforeSoapOut">
+    <wsdl:part name="parameters" element="tns:consultarSaldoAforeResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WSVentanillaUnicaAforesServiceSoap">
+    <wsdl:operation name="consultarSaldoAfore">
+      <wsdl:input message="tns:consultarSaldoAforeSoapIn" />
+      <wsdl:output message="tns:consultarSaldoAforeSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSVentanillaUnicaAforesServiceSoap" type="tns:WSVentanillaUnicaAforesServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="consultarSaldoAfore">
+      <soap:operation soapAction="http://www.aforecoppel2-1.com.mx/WSVentanillaUnicaAforesService/consultarSaldoAfore" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WSVentanillaUnicaAforesServiceSoap12" type="tns:WSVentanillaUnicaAforesServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="consultarSaldoAfore">
+      <soap12:operation soapAction="http://www.aforecoppel2-1.com.mx/WSVentanillaUnicaAforesService/consultarSaldoAfore" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WSVentanillaUnicaAforesService">
+    <wsdl:port name="WSVentanillaUnicaAforesServiceSoap" binding="tns:WSVentanillaUnicaAforesServiceSoap">
+      <soap:address location="http://192.168.60.23:8080/wsSaldoPreliminar/WSVentanilla.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WSVentanillaUnicaAforesServiceSoap12" binding="tns:WSVentanillaUnicaAforesServiceSoap12">
+      <soap12:address location="http://192.168.60.23:8080/wsSaldoPreliminar/WSVentanilla.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
